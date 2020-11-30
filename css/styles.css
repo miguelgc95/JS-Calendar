@@ -1,4 +1,3 @@
-
 #general-wrapper{
     display: flex;
     flex-direction: column;
@@ -13,12 +12,14 @@
     justify-content: center;
 }
 
-.newEvent{
-    justify-self: flex-end;
-}
-
 #core{
     display: flex;
+    border: solid 1px black;
+}
+
+#modal{
+    display: flex;
+    flex-direction: column;
     border: solid 1px black;
 }
 
@@ -71,4 +72,11 @@
     background: black;
     height: 10px;
     width: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: row;
 }

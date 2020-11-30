@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="general-wrapper">
-        <div id="header">
+        <section id="header">
             <h1>Coolest-calendar</h1>
             <button class="btn newEvent">New button</button>
         </div>
@@ -29,6 +29,78 @@
                 <p class="dayTitle">Sunday</p>
             </div>
             <div id="calendarGrid"></div>
+        </section>
+        <section id="modal">
+            <div class="modal-wrapper">
+                <h2>NEW EVENT</h2>
+                <form action="">
+                    <div class="form-group">
+                        <label for="title">Title: </label>
+                        <input type="text" id="title" class="input-textbox" required>
+                        <span class="errorMessage"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="initialDate">Initial date: </label>
+                        <input type="date" id="initialDate" class="input-textbox" placeholder="dd/mm/yyyy" required>
+                        <span class="errorMessage"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="booleanEndDate" type="checkbox" class="input-checkbox">
+                        <label for="booleanEndDate" class="label-checkbox">End date</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate">End date: </label>
+                        <input type="date" id="endDate" class="input-textbox" placeholder="dd/mm/yyyy">
+                        <span class="errorMessage"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="booleanReminder" type="checkbox" class="input-checkbox">
+                        <label for="booleanReminder" class="label-checkbox">Remind me when this event expires</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="minutes">Time: </label>
+                        <select id="minutes">
+                            <option value="5m">5 minutes before</option>
+                            <option value="10m">10 minutes before</option>
+                            <option value="15m">15 minutes before</option>
+                            <option value="30m">30 minutes before</option>
+                            <option value="1h">1 hour before</option>
+                        </select>
+                    </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description: </label>
+                        <textarea id="description" class="input-textbox" rows="4" cols="25"></textarea>
+                        <span class="errorMessage"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="typeOfEvent">Event type: </label>
+                            <select id="typeOfEvent">
+                                <option value="Meeting">Meeting</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Study">Study</option>
+                                <option value="Birthday">Birthday</option>
+                                <option value="Others">Others</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button>
+                            Cancel
+                        </button>
+                        <button>
+                            Create
+                        </button>
+                    </div>
+                </form>
+            </div>
         </section>
     </div>
     <script src="js/main.js" ></script>
