@@ -1,8 +1,3 @@
-/* body{
-    width: 80%;
-    display: flex;
-    justify-content: center;
-} */
 
 #general-wrapper{
     display: flex;
@@ -25,4 +20,55 @@
 #core{
     display: flex;
     border: solid 1px black;
+}
+
+#calendarSection{
+    width: 70%;
+    border: 1px solid black;
+}
+#calendarHeader{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#daysHeader{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    border: 1px solid black;
+}
+.dayTitle{
+    margin-left: 3.8%;
+    margin-right: 3.8%;
+}
+#calendarGrid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 1px solid black;
+}
+.emptySquare{
+    width: 14.05%;
+    height: 10em;
+    border: 1px solid black;
+}
+.dayOnCalendar{
+    width: 14.05%;
+    height: 10em;
+    border: 1px solid black;
+    text-align: center;
+}
+.addEventBtn{
+    background: transparent;
+    border: none !important;
+    font-size:0;
+    height: 10px;
+    width: 100px;
+}
+.addEventBtn:hover{
+    background: black;
+    height: 10px;
+    width: 100px;
 }
