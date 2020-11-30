@@ -1,0 +1,28 @@
+/* body{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+} */
+
+#general-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px black;
+}
+
+#header{
+    display: flex;
+    flex-direction: row;
+    border: solid 1px black;
+    justify-content: center;
+}
+
+.newEvent{
+    justify-self: flex-end;
+}
+
+#core{
+    display: flex;
+    border: solid 1px black;
+}
