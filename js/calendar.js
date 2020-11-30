@@ -1,16 +1,21 @@
+
 //get elements on the html
 var calendarDate = document.getElementById("calendarDate");
 var calendarGrid = document.getElementById("calendarGrid");
 
 //delcare date variables
-var date = new Date();
-var dayOfMonth = date.getDate();
-var dayOfWeek = date.getDay();
+const date = new Date();
+const today = date.getDate();
+const dayOfWeek = date.getDay();
 var month = date.getMonth();
 var year = date.getFullYear();
 var monthS = "";
 var daysInMonth = "";
 var dayMonthStarted = "";
+var todayId = today+"-"+month+"-"+year;
+
+window.onload = createCalendar();
+
 
 function whatMonth(){
     switch(month){
@@ -83,10 +88,25 @@ function whatMonth(){
 
 function setCalendarDate(){
     whatMonth();
-    if(dayOfMonth <10){
-        dayOfMonth = "0"+dayOfMonth;
+    if(today <10){
+        today = "0"+today;
+        calendarDate.innerHTML = monthS + " " + today + ", " + year;
     }
-    calendarDate.innerHTML = monthS + " " + dayOfMonth + ", " + year;
+    if(today >= 30 && month == 1){
+        if(year%4==0){
+            daysInMonth = 29;
+            calendarDate.innerHTML = monthS + " 29, " + year;
+        }else{
+            daysInMonth = 28;
+            calendarDate.innerHTML = monthS + " 28, " + year;
+        }
+    }else{
+        if(today == 31 && daysInMonth == 30){
+            calendarDate.innerHTML = monthS + " 30, " + year;
+        }else{
+            calendarDate.innerHTML = monthS + " " + today + ", " + year;
+        }
+    }
 }
 
 window.onload = setCalendarDate();
@@ -101,34 +121,83 @@ function monthStartsWith(){
 
 function createCalendar(){
     monthStartsWith();
+    var calendarContainer = document.createElement("div");
+    calendarContainer.setAttribute("id", "calendarContainer");
+    calendarGrid.append(calendarContainer);
     for(let i = 1; i < (daysInMonth+dayMonthStarted); i++){
         if(i < dayMonthStarted){
             //empty square on calendar
             var calendarEmpty = document.createElement("div");
             calendarEmpty.classList.add("emptySquare");
-            calendarGrid.append(calendarEmpty);
+            calendarContainer.append(calendarEmpty);
         }
         else{
             //create div
             var calendarSquare = document.createElement("div");
             calendarSquare.classList.add("dayOnCalendar");
-
+            calendarSquare.setAttribute("id", (i-dayMonthStarted)+1+"-"+month+"-"+year);
             //set text on div
             calendarSquare.innerHTML = (i-dayMonthStarted)+1;
-
             //create btn to add event on div
             var addEventBtn = document.createElement("button");
             addEventBtn.classList.add("addEventBtn");
             //adding btn to div
             calendarSquare.append(addEventBtn);
             //adding div to calendar
-            calendarGrid.append(calendarSquare);
-            /*calendarSquare.setAttribute("id", (i-dayMonthStarted)+1);*/
-            console.log(i-dayMonthStarted+1);
+            calendarContainer.append(calendarSquare);
         }
-
+        focusDay();
     }
-    
 }
 
-window.onload = createCalendar();
+
+document.getElementById("nextButton").addEventListener("click", switchMonthNext);
+
+function switchMonthNext(){
+    document.getElementById("calendarContainer").remove();
+    if(month < 11){
+        month +=1;
+        whatMonth();
+        setCalendarDate();
+        monthStartsWith();
+        createCalendar();
+        console.log(month);
+    }else{
+        month = 0;
+        year +=1;
+        console.log(month);
+        whatMonth();
+        setCalendarDate();
+        monthStartsWith();
+        createCalendar();
+    }
+}
+
+document.getElementById("backButton").addEventListener("click", switchMonthBack);
+function switchMonthBack(){
+    document.getElementById("calendarContainer").remove();
+    if(month > 0){
+        month -=1;
+        whatMonth();
+        setCalendarDate();
+        monthStartsWith();
+        createCalendar();
+    }else{
+        month = 11;
+        year -=1;
+        whatMonth();
+        setCalendarDate();
+        monthStartsWith();
+        createCalendar();
+    }
+}
+
+function focusDay(){
+    var divArr = document.getElementsByTagName("div");
+    for(let i = 0; i < divArr.length; i++){
+        if(document.getElementsByTagName("div")[i].id == todayId){
+            document.getElementsByTagName("div")[i].classList.add("focusToday");
+        }
+    }
+}
+
