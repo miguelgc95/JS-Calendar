@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     border: solid 1px black;
+    align-items: center;
 }
 
 #header{
@@ -12,20 +13,10 @@
     justify-content: center;
 }
 
-#core{
-    display: flex;
-    border: solid 1px black;
-}
-
-#modal{
-    display: flex;
-    flex-direction: column;
-    border: solid 1px black;
-}
-
 #calendarSection{
     width: 70%;
     border: 1px solid black;
+    margin: 0 auto;
 }
 #calendarHeader{
     display: flex;
@@ -73,6 +64,14 @@
     height: 10px;
     width: 100px;
     justify-content: space-between;
+    align-items: center;
+}
+
+#modal{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    justify-content: space-around;
     align-items: center;
 }
 
