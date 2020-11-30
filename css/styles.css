@@ -41,6 +41,12 @@
     width: 100%;
     border: 1px solid black;
 }
+#calendarContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 1px solid black;
+}
 .emptySquare{
     width: 14.05%;
     height: 10em;
@@ -78,4 +84,8 @@
 .form-group{
     display: flex;
     flex-direction: row;
+}
+
+.focusToday{
+    background-color: red;
 }
