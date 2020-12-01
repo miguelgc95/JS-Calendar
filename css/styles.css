@@ -23,6 +23,16 @@
     flex-wrap: nowrap;
     width: 100%;
     border: 1px solid black;
+    justify-content: center;
+}
+#backButton, #nextButton{
+    border: none;
+    background: transparent;
+}
+#backButton:focus, #nextButton:focus{
+    outline: none;
+    border: none;
+    background: transparent;
 }
 
 #daysHeader{
@@ -40,6 +50,7 @@
     flex-wrap: wrap;
     width: 100%;
     border: 1px solid black;
+    overflow-x: hidden;
 }
 #calendarContainer{
     display: flex;
@@ -88,4 +99,27 @@
 
 .focusToday{
     background-color: red;
+}
+
+.removedNext{ 
+    transform: translateX(-100vw); 
+} 
+.removedBack{ 
+    transform: translateX(100vw); 
+} 
+
+#calendarContainer{ 
+    transition: transform 0.8s 0s; 
+} 
+
+.addNext, .addBack{
+    animation: fadeIn ease 0.7s;
+    -webkit-animation: fadeIn ease 0.7s;
+    -moz-animation: fadeIn ease 0.7s;
+    -o-animation: fadeIn ease 0.7s;
+    -ms-animation: fadeIn ease 0.7s;
+    }
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }

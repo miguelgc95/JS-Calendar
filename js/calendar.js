@@ -15,6 +15,7 @@ var dayMonthStarted = "";
 var todayId = today+"-"+month+"-"+year;
 
 window.onload = createCalendar();
+window.onload = setCalendarDate();
 
 
 function whatMonth(){
@@ -89,8 +90,8 @@ function whatMonth(){
 function setCalendarDate(){
     whatMonth();
     if(today <10){
-        today = "0"+today;
-        calendarDate.innerHTML = monthS + " " + today + ", " + year;
+        var t = "0"+today;
+        calendarDate.innerHTML = monthS + " " + t + ", " + year;
     }
     if(today >= 30 && month == 1){
         if(year%4==0){
@@ -104,12 +105,12 @@ function setCalendarDate(){
         if(today == 31 && daysInMonth == 30){
             calendarDate.innerHTML = monthS + " 30, " + year;
         }else{
-            calendarDate.innerHTML = monthS + " " + today + ", " + year;
+            calendarDate.innerHTML = monthS + " " + t + ", " + year;
         }
     }
 }
 
-window.onload = setCalendarDate();
+
 
 function monthStartsWith(){
     whatMonth();
@@ -143,6 +144,7 @@ function createCalendar(){
             addEventBtn.classList.add("addEventBtn");
             //adding btn to div
             calendarSquare.append(addEventBtn);
+            //addEvent();
             //adding div to calendar
             calendarContainer.append(calendarSquare);
         }
@@ -154,14 +156,18 @@ function createCalendar(){
 document.getElementById("nextButton").addEventListener("click", switchMonthNext);
 
 function switchMonthNext(){
-    document.getElementById("calendarContainer").remove();
+    var calendarContainer = document.getElementById("calendarContainer");
+    calendarContainer.classList.add("removedNext");
     if(month < 11){
         month +=1;
         whatMonth();
         setCalendarDate();
         monthStartsWith();
-        createCalendar();
-        console.log(month);
+        calendarContainer.addEventListener("transitionend",() => {
+            calendarContainer.remove();
+            createCalendar();
+            document.getElementById("calendarContainer").classList.add("addNext");
+        })
     }else{
         month = 0;
         year +=1;
@@ -169,26 +175,39 @@ function switchMonthNext(){
         whatMonth();
         setCalendarDate();
         monthStartsWith();
-        createCalendar();
+        calendarContainer.addEventListener("transitionend",() => {
+            calendarContainer.remove();
+            createCalendar();
+            document.getElementById("calendarContainer").classList.add("addNext");
+        })
     }
 }
 
 document.getElementById("backButton").addEventListener("click", switchMonthBack);
 function switchMonthBack(){
-    document.getElementById("calendarContainer").remove();
+    var calendarContainer = document.getElementById("calendarContainer");
+    calendarContainer.classList.add("removedBack");
     if(month > 0){
         month -=1;
         whatMonth();
         setCalendarDate();
         monthStartsWith();
-        createCalendar();
+        calendarContainer.addEventListener("transitionend",() => {
+            calendarContainer.remove();
+            createCalendar();
+            document.getElementById("calendarContainer").classList.add("addBack");
+        })
     }else{
         month = 11;
         year -=1;
         whatMonth();
         setCalendarDate();
         monthStartsWith();
-        createCalendar();
+        calendarContainer.addEventListener("transitionend",() => {
+            calendarContainer.remove();
+            createCalendar();
+            document.getElementById("calendarContainer").classList.add("addBack");
+        })
     }
 }
 
@@ -201,3 +220,6 @@ function focusDay(){
     }
 }
 
+function createEvent(){
+
+}
