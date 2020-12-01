@@ -13,7 +13,7 @@
     <div id="general-wrapper">
         <section id="header">
             <h1>Coolest-calendar</h1>
-            <button class="btn newEvent">New button</button>
+            <a href="#modal" id="show-modal"><button class="btn newEvent">New Event</button></a>
         </section>
         <section id="calendarSection">
             <div id="calendarHeader">
@@ -39,8 +39,8 @@
             </div>
             <div id="calendarGrid"></div>
         </section>
-        <a href="#modal" id="show-modal">new event</a>
-        <aside id="modal" class="modal">
+
+        <aside id="modal" class="modal backgroundCloseMe">
             <div class="content-modal">
                 <a href="#" class="close-modal">X</a>
                 <h2>NEW EVENT</h2>
@@ -101,17 +101,11 @@
                                 <option value="Others">Others</option>
                             </select>
                     </div>
-
-                    <div class="form-group">
-                        <button>
-                            Cancel
-                        </button>
-                        <button>
-                            Create
-                        </button>
-                    </div>
                 </form>
-                <a href="#" class="btn-close-modal"></a>
+                <div class="form-group">
+                    <a href="#"><button>Cancel</button></a>
+                    <button>Create</button>
+                </div>
             </div>
         </aside>
     </div>
