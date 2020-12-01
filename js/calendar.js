@@ -141,6 +141,10 @@ function createCalendar(){
             calendarSquare.innerHTML = (i-dayMonthStarted)+1;
             //create btn to add event on div
             var addEventBtn = document.createElement("button");
+            var addIcon = document.createElement("i");
+            addIcon.classList.add("fas");
+            addIcon.classList.add("fa-calendar-plus");
+            addEventBtn.append(addIcon);
             addEventBtn.classList.add("addEventBtn");
             //adding btn to div
             calendarSquare.append(addEventBtn);

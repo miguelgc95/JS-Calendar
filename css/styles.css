@@ -31,8 +31,7 @@
 }
 #backButton:focus, #nextButton:focus{
     outline: none;
-    border: none;
-    background: transparent;
+    color: black;
 }
 
 #daysHeader{
@@ -44,6 +43,9 @@
 .dayTitle{
     margin-left: 3.8%;
     margin-right: 3.8%;
+}
+.dayTitleMobile{
+    display: none;
 }
 #calendarGrid{
     display: flex;
@@ -59,29 +61,32 @@
     border: 1px solid black;
 }
 .emptySquare{
-    width: 14.05%;
-    height: 10em;
-    border: 1px solid black;
+    width: 14.17%;
+    height: 8em;
+    border-right: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(238, 238, 238);
 }
 .dayOnCalendar{
-    width: 14.05%;
-    height: 10em;
-    border: 1px solid black;
+    width: 14.17%;
+    height: 8em;
+    border-right: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(238, 238, 238);
     text-align: center;
 }
 .addEventBtn{
     background: transparent;
     border: none !important;
-    font-size:0;
-    height: 10px;
-    width: 100px;
+    font-size:100%;
+    margin-right: -48%;
+    margin-left: 25%;
+    color: transparent;
 }
 .addEventBtn:hover{
-    background: black;
-    height: 10px;
-    width: 100px;
-    justify-content: space-between;
-    align-items: center;
+    color: black;
+}
+.addEventBtn:focus{
+    outline: none;
+    color: black;
 }
 
 #show-modal{
@@ -149,7 +154,7 @@
 }
 
 .focusToday{
-    background-color: red;
+    background-color: rgb(236, 235, 235);
 }
 
 .removedNext{ 
@@ -160,17 +165,62 @@
 } 
 
 #calendarContainer{ 
-    transition: transform 0.8s 0s; 
+    transition: transform 0.3s 0s; 
 } 
 
 .addNext, .addBack{
-    animation: fadeIn ease 0.7s;
-    -webkit-animation: fadeIn ease 0.7s;
-    -moz-animation: fadeIn ease 0.7s;
-    -o-animation: fadeIn ease 0.7s;
-    -ms-animation: fadeIn ease 0.7s;
+    animation: fadeIn ease 0.3s;
+    -webkit-animation: fadeIn ease 0.3s;
+    -moz-animation: fadeIn ease 0.3s;
+    -o-animation: fadeIn ease 0.3s;
+    -ms-animation: fadeIn ease 0.3s;
     }
 @keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
 }
+
+@media only screen and (max-width: 600px) {
+    .addEventBtn{
+      margin-right: -20%;
+      margin-left: 10%;
+    }
+    .dayTitle{
+        display: none;
+    }
+    .dayTitleMobile{
+        display: block;
+        margin-left: 5.5%;
+        margin-right: 5.5%;
+    }
+    .emptySquare{
+        width: 13.99%;
+        height: 3em;
+    }
+    .dayOnCalendar{
+        width: 13.99%;
+        height: 3em;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .addEventBtn{
+      margin-right: -20%;
+      margin-left: 10%;
+    }
+    .dayTitle{
+        display: none;
+    }
+    .dayTitleMobile{
+        display: block;
+        margin-left: 5.2%;
+        margin-right: 5.2%;
+    }
+    .emptySquare{
+        width: 13.915%;
+        height: 3em;
+    }
+    .dayOnCalendar{
+        width: 13.915%;
+        height: 3em;
+    }
+  }
