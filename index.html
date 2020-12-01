@@ -30,8 +30,10 @@
             </div>
             <div id="calendarGrid"></div>
         </section>
-        <section id="modal">
-            <div class="modal-wrapper">
+        <a href="#modal" id="show-modal">new event</a>
+        <aside id="modal" class="modal">
+            <div class="content-modal">
+                <a href="#" class="close-modal">X</a>
                 <h2>NEW EVENT</h2>
                 <form action="">
                     <div class="form-group">
@@ -100,8 +102,9 @@
                         </button>
                     </div>
                 </form>
+                <a href="#" class="btn-close-modal"></a>
             </div>
-        </section>
+        </aside>
     </div>
     <script src="js/main.js" ></script>
     <script src="js/calendar.js"></script>
