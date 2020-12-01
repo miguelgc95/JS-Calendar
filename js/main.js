@@ -30,6 +30,9 @@ function backgroundClose(event){
     }
 } */
 
+function storeNewEvent()
+
 document.getElementById("endDateCheck").addEventListener("click", togForEndDate);
 document.getElementById("reminderCheck").addEventListener("click", togforReminder);
 document.getElementById("modal").addEventListener("click", backgroundClose);
+document.getElementById("storeEventInfo").addEventListener("click", storeNewEvent);
