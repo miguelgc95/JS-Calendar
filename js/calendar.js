@@ -141,18 +141,15 @@ function createCalendar(){
             calendarSquare.innerHTML = (i-dayMonthStarted)+1;
             //create btn to add event on div
             //<a href="#"></a>
-            var aButton = document.createElement("a");
-            aButton.setAttribute("href", "#modal");
             var addEventBtn = document.createElement("button");
             var addIcon = document.createElement("i");
             addIcon.classList.add("fas");
             addIcon.classList.add("fa-calendar-plus");
             addEventBtn.append(addIcon);
             addEventBtn.classList.add("addEventBtn");
-            //adding abtn to div
-            aButton.append(addEventBtn);
-            calendarSquare.append(aButton);
-
+            addEventBtn.addEventListener("click", (new createModal()).openModal);
+            //adding btn to div
+            calendarSquare.append(addEventBtn);
             //addEvent();
             //adding div to calendar
             calendarContainer.append(calendarSquare);

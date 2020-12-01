@@ -13,7 +13,7 @@
     <div id="general-wrapper">
         <section id="header">
             <h1>Coolest-calendar</h1>
-            <a href="#modal" id="show-modal"><button class="btn newEvent">New Event</button></a>
+            <button id="modal-opener">Create Event</button>
         </section>
         <section id="calendarSection">
             <div id="calendarHeader">
@@ -40,11 +40,11 @@
             <div id="calendarGrid"></div>
         </section>
 
-        <aside id="modal" class="modal backgroundCloseMe">
-            <div class="content-modal">
-                <a href="#" class="close-modal">X</a>
+        <aside id="modal-root">
+            <div class="modal">
+                <a href="#" id="closeTop" class="close-modal">X</a>
                 <h2>NEW EVENT</h2>
-                <form action="">
+                <form action="" id="modalForm">
                     <div class="form-group">
                         <label for="title">Title: </label>
                         <input type="text" id="title" class="input-textbox" required>
@@ -103,7 +103,7 @@
                     </div>
                 </form>
                 <div class="form-group">
-                    <a href="#"><button>Cancel</button></a>
+                    <a href="#"><button id="cancelBtn">Cancel</button></a>
                     <button id="storeEventInfo">Create</button>
                 </div>
             </div>
