@@ -12,8 +12,6 @@ function createModal() {
   var addEventBtn = document.querySelectorAll(".addEventBtn");
   var createBtn = document.getElementById("storeEventInfo");
   createBtn.addEventListener("click", rootClick);
-  createBtn.addEventListener("click", createEvent);
-  
 
   for(let i = 0; i < addEventBtn.length; i++){
       addEventBtn[i].addEventListener("click", openModal);
@@ -76,7 +74,17 @@ function storeNewEvent(event){
     var arr=JSON.parse(localStorage.getItem("firstKey"));
     arr.push(newEvent);
     localStorage.setItem("firstKey", JSON.stringify(arr));
+    addOneEvent();
   }
+}
+
+function addOneEvent(){
+  var arr=JSON.parse(localStorage.getItem("firstKey"));
+  console.log(arr[arr.length-1]);
+  var whatDay=document.getElementById(arr[arr.length-1].initialDate);
+  var displayEvent=document.createElement("button");
+  displayEvent.innerHTML="Event today";
+  whatDay.append(displayEvent);
 }
 
 document.getElementById("storeEventInfo").addEventListener("click", storeNewEvent);
