@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: solid 1px black;
     align-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #header{
+    width: 50%;
     display: flex;
     flex-direction: row;
-    border: solid 1px black;
     justify-content: center;
     align-items: center;
 }
@@ -42,8 +42,8 @@
     border: 1px solid black;
 }
 .dayTitle{
-    margin-left: 3.8%;
-    margin-right: 3.8%;
+    margin-left: 3.4%;
+    margin-right: 3.4%;
 }
 .dayTitleMobile{
     display: none;
@@ -62,13 +62,13 @@
     border: 1px solid black;
 }
 .emptySquare{
-    width: 14.17%;
+    width: 14.16899%;
     height: 8em;
     border-right: 1px solid rgb(238, 238, 238);
     border-bottom: 1px solid rgb(238, 238, 238);
 }
 .dayOnCalendar{
-    width: 14.17%;
+    width: 14.16899%;
     height: 8em;
     border-right: 1px solid rgb(238, 238, 238);
     border-bottom: 1px solid rgb(238, 238, 238);
@@ -89,64 +89,6 @@
     outline: none;
     color: black;
 }
-
-
-/* Modal styles */
-/*#show-modal{
-    transition: all 0.15s linear;
-}
-
-.modal{
-    position: fixed;
-    top: -100vh;
-    left: 0;
-    z-index: 99999999;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal .content-modal{
-    width: 100%;
-    max-width: 500px;
-    position: fixed;
-    left: 50%;
-    top: -100vh;
-    transition: opacity 0.35s ease;
-    margin-left: -250px;
-    background: white;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
-    z-index: 999999;
-}
-
-.close-modal{
-    position: absolute;
-    top: 0.2em;
-    right: 0.375em;
-    margin: 0;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.modal:target{
-    opacity: 1;
-    top: 0;
-}*/
-
-/* .modal .btn-close-modal{
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999991;
-} */
-/*.modal:target .content-modal{
-    top: 50px;
-    transition: top 0.35s ease;
-}*/
 
 .form-group{
     display: flex;
@@ -183,8 +125,115 @@
     0% {opacity:0;}
     100% {opacity:1;}
 }
+#modal-opener{
+    width: 20%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    background-color: #f2f2f2;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+#modal-opener:hover{
+    cursor: pointer;
+    border: 1px solid #d8d7d7;
+    opacity: 1;
+}
 
-@media only screen and (max-width: 600px) {
+#modal-root {
+    position: fixed;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    left : 0;
+    top: 0;
+    width: 0px;
+    height : 0px;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+  }
+  
+#modal-root.visible {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.15s ease-out;
+  }
+
+  .modal {
+    position: fixed;
+    margin: 0 auto;
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+.close-modal{
+    float: right;
+    cursor: pointer;
+}
+  input[type=text], select, textarea {
+    width: 90%;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-radius: 1%;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0px;
+    display: inline-block;
+  }
+  
+  .formContainer {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  .modal-btn{
+      display: flex;
+  }
+  #cancelBtn, #storeEventInfo{
+    width: 20%;
+    margin-top: 2%;
+    margin-right: 2%;
+    background-color: #f2f2f2;
+    color: black;
+    border: none;
+    border-radius: 2px;
+    padding: 2%;
+  }
+  #cancelBtn:hover, #storeEventInfo:hover{
+    cursor: pointer;
+    border: 1px solid #d8d7d7;
+    opacity: 1;
+  }
+  /* Clear floats after the columns */
+  .form-group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media only screen and (max-width: 600px) {
     .addEventBtn{
       margin-right: -20%;
       margin-left: 10%;
@@ -205,6 +254,24 @@
         width: 13.99%;
         height: 3em;
     }
+    .col-25{
+        width: 100%;
+        margin-top: 0;
+      }
+      .col-75{
+        width: 100%;
+        margin-top: 5%;
+      }
+      #cancelBtn, #storeEventInfo{
+        width: 50%;
+        margin-top: 2%;
+        margin-right: 2%;
+        background-color: #f2f2f2;
+        color: black;
+        border: none;
+        border-radius: 2px;
+        padding: 2%;
+      }
   }
   @media only screen and (max-width: 480px) {
     .addEventBtn{
@@ -227,35 +294,42 @@
         width: 13.915%;
         height: 3em;
     }
+    .col-25{
+        width: 100%;
+        margin-top: 0;
+      }
+    .col-75{
+        width: 100%;
+        margin-top: 5%;
+      }
+      #cancelBtn, #storeEventInfo{
+        width: 50%;
+        margin-top: 2%;
+        margin-right: 2%;
+        background-color: #f2f2f2;
+        color: black;
+        border: none;
+        border-radius: 2px;
+        padding: 2%;
+      }
   }
-
-  #modal-root {
-    position: fixed;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.4);
-    left : 0;
-    top: 0;
-    width: 0px;
-    height : 0px;
-    opacity: 0;
-    transition: opacity 0.15s ease-out;
+  @media only screen and (min-width: 1250px) {
+    .addEventBtn{
+        margin-right: -45%;
+        margin-left: 25%;
+    }
+    .dayTitle{
+        margin-left: 3.6%;
+        margin-right: 3.6%;
+    }
   }
-  
-  #modal-root.visible {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    transition: opacity 0.15s ease-out;
-  }
-  
-  .modal {
-    position: fixed;
-    margin: 0 auto;
-    width: 50%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  @media only screen and (min-width: 1450px) {
+    .addEventBtn{
+      margin-right: -48%;
+      margin-left: 28%;
+    }
+    .dayTitle{
+        margin-left: 4.3%;
+        margin-right: 4.3%;
+    }
   }
