@@ -49,22 +49,22 @@
                 <form action="" id="modalForm" class="formContainer">
                     <div class="form-group">
                         <div class="col-25">
-                        <label for="title">Title: </label>
+                            <label for="title">Title: </label>
                         </div>
                         <div class="col-75">
-                        <input type="text" id="title" class="input-textbox" required>
-                        <span class="errorMessage"></span>
+                            <input type="text" id="title" name="title" class="input-textbox" required>
+                            <span id="titleStatus" class="errorMessage"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-25">
-                        <label for="initialDate">Initial date: </label>
+                            <label for="initialDate">Initial date: </label>
                         </div>
                         <div class="col-75">
                             <div style="display: flex;">
-                                <input type="date" id="initialDate" class="input-textbox" placeholder="dd/mm/yyyy" required>
-                                <span class="errorMessage"></span>
+                                <input type="datetime-local" id="initialDate" class="input-textbox" placeholder="dd/mm/yyyy" required>
+                                <span id="initialDateStatus" class="errorMessage"></span>
                                 <div id="endDateCheck">
                                     <input id="booleanEndDate" type="checkbox" class="input-checkbox">
                                     <label for="booleanEndDate" class="label-checkbox">End date</label>
@@ -75,49 +75,49 @@
 
                     <div id="endDateToHide" class="form-group hide-me">
                         <div class="col-25">
-                        <label for="endDate">End date: </label>
+                            <label for="endDate">End date: </label>
                         </div>
                         <div class="col-75">
-                        <input type="date" id="endDate" class="input-textbox" placeholder="dd/mm/yyyy">
-                        <span class="errorMessage"></span>
+                            <input type="date" id="endDate" class="input-textbox" placeholder="dd/mm/yyyy">
+                            <span class="errorMessage"></span>
                         </div>
                     </div>
 
                     <div id="reminderCheck" class="form-group">
                         <div class="col-75">
-                        <input id="booleanReminder" type="checkbox" class="input-checkbox">
-                        <label for="booleanReminder" class="label-checkbox">Remind me when this event expires</label>
+                            <input id="booleanReminder" type="checkbox" class="input-checkbox">
+                            <label for="booleanReminder" class="label-checkbox">Remind me when this event expires</label>
                         </div>
                     </div>
 
                     <div id="reminderToHide" class="form-group hide-me">
                         <div class="col-25">
-                        <label for="minutes">Time: </label>
+                            <label for="minutes">Time: </label>
                         </div>
                         <div class="col-75">
-                        <select id="minutes">
-                            <option value="5m">5 minutes before</option>
-                            <option value="10m">10 minutes before</option>
-                            <option value="15m">15 minutes before</option>
-                            <option value="30m">30 minutes before</option>
-                            <option value="1h">1 hour before</option>
-                        </select>
+                            <select id="minutes">
+                                <option value="5m">5 minutes before</option>
+                                <option value="10m">10 minutes before</option>
+                                <option value="15m">15 minutes before</option>
+                                <option value="30m">30 minutes before</option>
+                                <option value="1h">1 hour before</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-25">
-                        <label for="description">Description: </label>
+                            <label for="description">Description: </label>
                         </div>
                         <div class="col-75">
-                        <textarea id="description" class="input-textbox" rows="4" cols="25"></textarea>
-                        <span class="errorMessage"></span>
+                            <textarea id="description" class="input-textbox" rows="4" cols="25"></textarea>
+                            <span class="errorMessage"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-25">
-                        <label for="typeOfEvent">Event type: </label>
+                            <label for="typeOfEvent">Event type: </label>
                         </div>
                         <div class="col-75">
                             <select id="typeOfEvent">

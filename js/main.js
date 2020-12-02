@@ -1,4 +1,6 @@
 localStorage.setItem("firstKey", JSON.stringify([]));
+const mydate=new Date();
+/* const compare */
 
 function createModal() {
   var modalRoot = document.getElementById('modal-root');
@@ -46,16 +48,76 @@ function createModal() {
   }
   document.getElementById("endDateCheck").addEventListener("click", togForEndDate);
   document.getElementById("reminderCheck").addEventListener("click", togforReminder);
-
-/* 		function validateForm(){
-      if(){
-        return true
-      }
-      else{
-        return flase
-      }
-    } */
 }
+
+document.getElementById("title").addEventListener("blur", titleValidator);
+document.getElementById("initialDate").onblur=function(){initialDateValidator()};
+
+function titleValidator(){
+  var title = document.getElementById("title");
+  if (title.value == "") {
+    document.getElementById("titleStatus").innerHTML =
+      "Please enter a title";
+    document.getElementById("titleStatus").style.display = "block";
+    return false;
+  } else if (title.value.length > 60) {
+    document.getElementById("titleStatus").innerHTML =
+      "No more than 60 characters";
+    document.getElementById("titleStatus").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("titleStatus").style.display = "none";
+    return true;
+  }
+}
+
+function initialDateValidator(){
+  var initialDate = document.getElementById("initialDate");
+  if (initialDate.value == "") {
+    document.getElementById("initialDateStatus").innerHTML =
+      "Please enter a date";
+    document.getElementById("initialDateStatus").style.display = "block";/* 
+    document.getElementById("initialDate").onblur=function(){initialDateValidator()}; */
+    return false;
+  } else if (Date.parse(initialDate.value)< Date.parse(mydate) ){
+    document.getElementById("initialDateStatus").innerHTML =
+      "Cannot choose a previous date";
+    document.getElementById("initialDateStatus").style.display = "block";/* 
+    document.getElementById("initialDate").onblur=function(){initialDateValidator()}; */
+    return false;
+  } else {
+    document.getElementById("initialDateStatus").style.display = "none";
+    return true;
+  }
+}
+
+/* function initialDateValidator(){
+
+}
+
+function validateForm(){
+  
+} */
+/* 
+function validateForm(){
+  document.getElementById("title").value
+
+  title:document.getElementById("title").value,
+  initialDate: document.getElementById("initialDate").value,
+  boolEnd: document.getElementById("booleanEndDate").checked,
+  endDate: document.getElementById("endDate").value,
+  boolReminder: document.getElementById("booleanReminder").checked,
+  minutesReminder: document.getElementById("minutes").value,
+  description: document.getElementById("description").value,
+  typeOfEvent: document.getElementById("typeOfEvent"),
+
+  if(){
+    return true
+  }
+  else{
+    return flase
+  }
+} */
 
 function storeNewEvent(event){
   event.preventDefault();
