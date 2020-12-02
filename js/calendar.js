@@ -136,7 +136,12 @@ function createCalendar(){
             //create div
             var calendarSquare = document.createElement("div");
             calendarSquare.classList.add("dayOnCalendar");
-            calendarSquare.setAttribute("id", (i-dayMonthStarted)+1+"-"+month+"-"+year);
+            if((i-dayMonthStarted+1)<10){
+                calendarSquare.setAttribute("id", year+"-"+(month+1)+"-"+('0'+(i-dayMonthStarted+1)));
+            }
+            else{
+                calendarSquare.setAttribute("id", year+"-"+(month+1)+"-"+(i-dayMonthStarted+1));
+            }
             //set text on div
             calendarSquare.innerHTML = (i-dayMonthStarted)+1;
             //create btn to add event on div
@@ -156,8 +161,8 @@ function createCalendar(){
         }
         focusDay();
     }
+    createEvent();
 }
-
 
 document.getElementById("nextButton").addEventListener("click", switchMonthNext);
 
@@ -227,5 +232,13 @@ function focusDay(){
 }
 
 function createEvent(){
-
+    var arr=JSON.parse(localStorage.getItem("firstKey"));
+    arr.forEach(element => {
+        console.log(document.getElementById(element.initialDate))
+        console.log(element.initialDate);
+        var whatDay=document.getElementById(element.initialDate);
+        var displayEvent=document.createElement("button");
+        displayEvent.innerHTML="Event today";
+        whatDay.append(displayEvent);
+    });
 }
