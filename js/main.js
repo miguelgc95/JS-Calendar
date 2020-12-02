@@ -1,6 +1,5 @@
 localStorage.setItem("firstKey", JSON.stringify([]));
 const mydate=new Date();
-/* const compare */
 
 function createModal() {
   var modalRoot = document.getElementById('modal-root');
@@ -23,11 +22,20 @@ function createModal() {
   button.addEventListener('click', openModal);
   modal.addEventListener('click', modalClick);
 
-  function rootClick() {
-    modalRoot.classList.remove('visible');
-    document.getElementById("modalForm").reset();
-    document.getElementById("endDateToHide").classList.add("hide-me");
-    document.getElementById("reminderToHide").classList.add("hide-me");
+  function rootClick(event) {
+    if(event.target===createBtn && generalValidation()){
+      modalRoot.classList.remove('visible');
+      document.getElementById("modalForm").reset();
+      document.getElementById("endDateToHide").classList.add("hide-me");
+      document.getElementById("reminderToHide").classList.add("hide-me");
+    }
+    else if (event.target!=createBtn){
+      modalRoot.classList.remove('visible');
+      document.getElementById("modalForm").reset();
+      document.getElementById("endDateToHide").classList.add("hide-me");
+      document.getElementById("reminderToHide").classList.add("hide-me");
+    }
+
   }
 
   function openModal() {
@@ -50,8 +58,52 @@ function createModal() {
   document.getElementById("reminderCheck").addEventListener("click", togforReminder);
 }
 
-document.getElementById("title").addEventListener("blur", titleValidator);
-document.getElementById("initialDate").onblur=function(){initialDateValidator()};
+/* Add events on the calendar code */
+
+function storeNewEvent(event){
+  event.preventDefault();
+
+  if (generalValidation()){
+    let newEvent={
+      title:document.getElementById("title").value,
+      initialDate: document.getElementById("initialDate").value,
+      boolEnd: document.getElementById("booleanEndDate").checked,
+      endDate: document.getElementById("endDate").value,
+      boolReminder: document.getElementById("booleanReminder").checked,
+      minutesReminder: document.getElementById("minutes").value,
+      description: document.getElementById("description").value,
+      typeOfEvent: document.getElementById("typeOfEvent").value,
+    }
+    var arr=JSON.parse(localStorage.getItem("firstKey"));
+    arr.push(newEvent);
+    localStorage.setItem("firstKey", JSON.stringify(arr));
+    addOneEvent();
+  }
+  else{}
+}
+
+function addOneEvent(){
+  var arr=JSON.parse(localStorage.getItem("firstKey"));
+  console.log(arr[arr.length-1]);
+  var whatDay=document.getElementById(arr[arr.length-1].initialDate);
+  var displayEvent=document.createElement("button");
+  displayEvent.innerHTML= document.getElementById("title").value;
+  displayEvent.setAttribute("id", arr.length-1);
+  displayEvent.setAttribute("class", "eventModalButton");
+  whatDay.append(displayEvent);
+  displayEvent.addEventListener("click", (new createEventModal().openModal));
+}
+
+document.getElementById("storeEventInfo").addEventListener("click", storeNewEvent);
+
+/* Validation code */
+
+function generalValidation(){
+  if(titleValidator()*initialDateValidator()){
+    return true;
+  }
+
+}
 
 function titleValidator(){
   var title = document.getElementById("title");
@@ -76,14 +128,12 @@ function initialDateValidator(){
   if (initialDate.value == "") {
     document.getElementById("initialDateStatus").innerHTML =
       "Please enter a date";
-    document.getElementById("initialDateStatus").style.display = "block";/* 
-    document.getElementById("initialDate").onblur=function(){initialDateValidator()}; */
+    document.getElementById("initialDateStatus").style.display = "block";
     return false;
   } else if (Date.parse(initialDate.value)< Date.parse(mydate) ){
     document.getElementById("initialDateStatus").innerHTML =
       "Cannot choose a previous date";
-    document.getElementById("initialDateStatus").style.display = "block";/* 
-    document.getElementById("initialDate").onblur=function(){initialDateValidator()}; */
+    document.getElementById("initialDateStatus").style.display = "block";
     return false;
   } else {
     document.getElementById("initialDateStatus").style.display = "none";
@@ -91,66 +141,5 @@ function initialDateValidator(){
   }
 }
 
-/* function initialDateValidator(){
-
-}
-
-function validateForm(){
-  
-} */
-/* 
-function validateForm(){
-  document.getElementById("title").value
-
-  title:document.getElementById("title").value,
-  initialDate: document.getElementById("initialDate").value,
-  boolEnd: document.getElementById("booleanEndDate").checked,
-  endDate: document.getElementById("endDate").value,
-  boolReminder: document.getElementById("booleanReminder").checked,
-  minutesReminder: document.getElementById("minutes").value,
-  description: document.getElementById("description").value,
-  typeOfEvent: document.getElementById("typeOfEvent"),
-
-  if(){
-    return true
-  }
-  else{
-    return flase
-  }
-} */
-
-function storeNewEvent(event){
-  event.preventDefault();
-
-  if (true/* validateForm() */){
-    let newEvent={
-      title:document.getElementById("title").value,
-      initialDate: document.getElementById("initialDate").value,
-      boolEnd: document.getElementById("booleanEndDate").checked,
-      endDate: document.getElementById("endDate").value,
-      boolReminder: document.getElementById("booleanReminder").checked,
-      minutesReminder: document.getElementById("minutes").value,
-      description: document.getElementById("description").value,
-      typeOfEvent: document.getElementById("typeOfEvent").value,
-    }
-    var arr=JSON.parse(localStorage.getItem("firstKey"));
-    arr.push(newEvent);
-    localStorage.setItem("firstKey", JSON.stringify(arr));
-    addOneEvent();
-  }
-}
-
-function addOneEvent(){
-  var arr=JSON.parse(localStorage.getItem("firstKey"));
-  console.log(arr[arr.length-1]);
-  var whatDay=document.getElementById(arr[arr.length-1].initialDate);
-  var displayEvent=document.createElement("button");
-  displayEvent.innerHTML= document.getElementById("title").value;
-  displayEvent.setAttribute("id", arr.length-1);
-  displayEvent.setAttribute("class", "eventModalButton");
-  whatDay.append(displayEvent);
-  
-  displayEvent.addEventListener("click", (new createEventModal().openModal));
-}
-
-document.getElementById("storeEventInfo").addEventListener("click", storeNewEvent);
+document.getElementById("title").addEventListener("blur", titleValidator);
+document.getElementById("initialDate").onblur=function(){initialDateValidator()};
