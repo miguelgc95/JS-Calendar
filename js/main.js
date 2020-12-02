@@ -10,6 +10,11 @@ function createModal() {
   var closeTop = document.getElementById("closeTop");
   closeTop.addEventListener("click", rootClick);
   var addEventBtn = document.querySelectorAll(".addEventBtn");
+  var createBtn = document.getElementById("storeEventInfo");
+  createBtn.addEventListener("click", rootClick);
+  createBtn.addEventListener("click", createEvent);
+  
+
   for(let i = 0; i < addEventBtn.length; i++){
       addEventBtn[i].addEventListener("click", openModal);
   }

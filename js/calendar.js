@@ -239,6 +239,7 @@ function createEvent(){
         var whatDay=document.getElementById(element.initialDate);
         var displayEvent=document.createElement("button");
         displayEvent.innerHTML="Event today";
+        //displayEvent.addEventListener("click", (new createEventModal()).openModal);
         whatDay.append(displayEvent);
     });
 }

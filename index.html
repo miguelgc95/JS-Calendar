@@ -136,8 +136,24 @@
                 </div>
             </div>
         </aside>
+        <!--id="modal-root-event"-->
+        <aside id="modal-root-event" style="width: 50%;">
+            <div class="modal eventModal">
+                <div id="modalEventCloseTop" class="close-modal"><i class="fa fa-close"></i></div>
+                <h2>Title: <span id="modalEventTitle"></span></h2>
+                <h3>Date: <span id="modalEventDate"></span></h3>
+                <h4>Event Type: <span id="modalEventType"></span></h4>
+                <h4>Event Description:</h4>
+                <p><span id="modalEventDescription"></span></p>
+                <div class="modal-btn">
+                    <button id="modalEventCancelBtn">Close</button>
+                    <button id="modalEventDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </aside>
     </div>
     <script src="js/main.js" ></script>
+    <script src="js/eventModal.js"></script>
     <script src="js/calendar.js"></script>
 </body>
 </html>
