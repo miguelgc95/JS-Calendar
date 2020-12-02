@@ -1,4 +1,4 @@
-
+localStorage.setItem("firstKey", JSON.stringify([]));
 
 function createModal() {
   var modalRoot = document.getElementById('modal-root');
@@ -36,11 +36,42 @@ function createModal() {
   }
   function togForEndDate(){
     document.getElementById("endDateToHide").classList.toggle("hide-me");
+  }
+
+  function togforReminder(){
+    document.getElementById("reminderToHide").classList.toggle("hide-me");
+  }
+  document.getElementById("endDateCheck").addEventListener("click", togForEndDate);
+  document.getElementById("reminderCheck").addEventListener("click", togforReminder);
+
+/* 		function validateForm(){
+      if(){
+        return true
+      }
+      else{
+        return flase
+      }
+    } */
 }
 
-function togforReminder(){
-    document.getElementById("reminderToHide").classList.toggle("hide-me");
+function storeNewEvent(event){
+  event.preventDefault();
+
+  if (true/* validateForm() */){
+    let newEvent={
+      title:document.getElementById("title").value,
+      initialDate: document.getElementById("initialDate").value,
+      boolEnd: document.getElementById("booleanEndDate").checked,
+      endDate: document.getElementById("endDate").value,
+      boolReminder: document.getElementById("booleanReminder").checked,
+      minutesReminder: document.getElementById("minutes").value,
+      description: document.getElementById("description").value,
+      typeOfEvent: document.getElementById("typeOfEvent"),
+    }
+    var arr=JSON.parse(localStorage.getItem("firstKey"));
+    arr.push(newEvent);
+    localStorage.setItem("firstKey", JSON.stringify(arr));
+  }
 }
-document.getElementById("endDateCheck").addEventListener("click", togForEndDate);
-document.getElementById("reminderCheck").addEventListener("click", togforReminder);
-}
+
+document.getElementById("storeEventInfo").addEventListener("click", storeNewEvent);
