@@ -12,7 +12,18 @@ var year = date.getFullYear();
 var monthS = "";
 var daysInMonth = "";
 var dayMonthStarted = "";
-var todayId = today+"-"+month+"-"+year;
+var todayId = "";
+var todayId2 = today < 10 ? year+"-"+(month+1)+"-0"+today : year+"-"+(month+1)+"-"+today;
+
+function setTodayId(){
+    if(today <10){
+        todayId2 = year+"-"+(month+1)+"-0"+today;
+    }
+    else{
+        todayId2 = year+"-"+(month+1)+"-"+today;
+    }
+}
+ 
 
 window.onload = createCalendar();
 window.onload = setCalendarDate();
@@ -164,6 +175,7 @@ function createCalendar(){
     createEvent();
 }
 
+
 document.getElementById("nextButton").addEventListener("click", switchMonthNext);
 
 function switchMonthNext(){
@@ -222,11 +234,12 @@ function switchMonthBack(){
     }
 }
 
+
 function focusDay(){
     var divArr = document.getElementsByTagName("div");
     for(let i = 0; i < divArr.length; i++){
-        if(document.getElementsByTagName("div")[i].id == todayId){
-            document.getElementsByTagName("div")[i].classList.add("focusToday");
+        if(divArr[i].id == todayId2){
+            divArr[i].classList.add("focusToday"); 
         }
     }
 }
@@ -239,7 +252,9 @@ function createEvent(){
         var whatDay=document.getElementById(element.initialDate);
         var displayEvent=document.createElement("button");
         displayEvent.innerHTML="Event today";
-        //displayEvent.addEventListener("click", (new createEventModal()).openModal);
+        displayEvent.setAttribute("class", "eventModalButton");
+        
         whatDay.append(displayEvent);
+        displayEvent.addEventListener("click", (new createEventModal()).openModal);
     });
 }

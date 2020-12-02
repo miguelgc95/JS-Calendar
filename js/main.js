@@ -131,7 +131,7 @@ function storeNewEvent(event){
       boolReminder: document.getElementById("booleanReminder").checked,
       minutesReminder: document.getElementById("minutes").value,
       description: document.getElementById("description").value,
-      typeOfEvent: document.getElementById("typeOfEvent"),
+      typeOfEvent: document.getElementById("typeOfEvent").value,
     }
     var arr=JSON.parse(localStorage.getItem("firstKey"));
     arr.push(newEvent);
@@ -145,8 +145,12 @@ function addOneEvent(){
   console.log(arr[arr.length-1]);
   var whatDay=document.getElementById(arr[arr.length-1].initialDate);
   var displayEvent=document.createElement("button");
-  displayEvent.innerHTML="Event today";
+  displayEvent.innerHTML= document.getElementById("title").value;
+  displayEvent.setAttribute("id", arr.length-1);
+  displayEvent.setAttribute("class", "eventModalButton");
   whatDay.append(displayEvent);
+  
+  displayEvent.addEventListener("click", (new createEventModal().openModal));
 }
 
 document.getElementById("storeEventInfo").addEventListener("click", storeNewEvent);
