@@ -263,6 +263,12 @@ function createEvent(){
         displayEvent.innerHTML= element.title;
         displayEvent.setAttribute("id", JSON.parse(localStorage.getItem("firstKey")).length-1);
         displayEvent.setAttribute("class", "eventModalButton");
+        var sepaux=new Date(sep);
+        var s = new Date();
+        console.log(sepaux.getTime()>s.getTime());
+        if(sepaux.getTime()<s.getTime()){
+            displayEvent.style.backgroundColor="red";
+        }
         whatDay.append(displayEvent);
         
         displayEvent.addEventListener("click", (new createEventModal()).openModal);

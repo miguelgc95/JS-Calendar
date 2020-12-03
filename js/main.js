@@ -1,11 +1,13 @@
-localStorage.setItem("firstKey", JSON.stringify([{boolEnd: false,
+localStorage.setItem("firstKey", JSON.stringify([
+{boolEnd: false,
   boolReminder: true,
   description: "",
   endDate: "",
-  initialDate: "2020-12-03T12:09",
+  initialDate: "2020-12-02T12:09",
   minutesReminder: "5m",
   title: "mik",
-  typeOfEvent: "Meeting"}]));
+  typeOfEvent: "Meeting"}
+]));
 const mydate=new Date();
 var reminderTrigger=[];
 window.onload= trigger();
