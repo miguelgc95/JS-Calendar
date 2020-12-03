@@ -58,7 +58,7 @@ function createModal() {
   document.getElementById("reminderCheck").addEventListener("click", togforReminder);
 }
 
-/* Add events on the calendar code */
+/* Adding events on the calendar code */
 
 function storeNewEvent(event){
   event.preventDefault();
@@ -84,12 +84,19 @@ function storeNewEvent(event){
 
 function addOneEvent(){
   var arr=JSON.parse(localStorage.getItem("firstKey"));
-  console.log(arr[arr.length-1]);
-  var whatDay=document.getElementById(arr[arr.length-1].initialDate);
+  var sep=arr[arr.length-1].initialDate;
+  var aux=sep.slice(0,-6)
+  
+  console.log(aux);
+  var whatDay=document.getElementById(aux);
+ /*  var whatDay=JSON.parse(localStorage.getItem("firstKey"))[JSON.parse(localStorage.getItem("firstKey")).length-1].initialDate */
+  
   var displayEvent=document.createElement("button");
   displayEvent.innerHTML= document.getElementById("title").value;
-  displayEvent.setAttribute("id", arr.length-1);
+  displayEvent.setAttribute("id", JSON.parse(localStorage.getItem("firstKey")).length-1);
   displayEvent.setAttribute("class", "eventModalButton");
+/*   console.log(displayEvent)
+  console.log(whatDay) */
   whatDay.append(displayEvent);
   displayEvent.addEventListener("click", (new createEventModal().openModal));
 }

@@ -121,8 +121,6 @@ function setCalendarDate(){
     }
 }
 
-
-
 function monthStartsWith(){
     whatMonth();
     dayMonthStarted = new Date(year + "-" + (month+1) + "-01").getDay();
@@ -174,7 +172,6 @@ function createCalendar(){
     }
     createEvent();
 }
-
 
 document.getElementById("nextButton").addEventListener("click", switchMonthNext);
 
@@ -234,12 +231,11 @@ function switchMonthBack(){
     }
 }
 
-
 function focusDay(){
     var divArr = document.getElementsByTagName("div");
     for(let i = 0; i < divArr.length; i++){
         if(divArr[i].id == todayId2){
-            divArr[i].classList.add("focusToday"); 
+            divArr[i].classList.add("focusToday");
         }
     }
 }
@@ -253,7 +249,6 @@ function createEvent(){
         var displayEvent=document.createElement("button");
         displayEvent.innerHTML="Event today";
         displayEvent.setAttribute("class", "eventModalButton");
-        
         whatDay.append(displayEvent);
         displayEvent.addEventListener("click", (new createEventModal()).openModal);
     });
