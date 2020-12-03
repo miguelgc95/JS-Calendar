@@ -2,7 +2,7 @@ localStorage.setItem("firstKey", JSON.stringify([{boolEnd: false,
   boolReminder: true,
   description: "",
   endDate: "",
-  initialDate: "2020-12-03T11:35",
+  initialDate: "2020-12-03T12:09",
   minutesReminder: "5m",
   title: "mik",
   typeOfEvent: "Meeting"}]));
@@ -115,7 +115,6 @@ function generalValidation(){
   if(titleValidator()*initialDateValidator()){
     return true;
   }
-
 }
 
 function titleValidator(){
@@ -180,7 +179,7 @@ function GeneralReminder(){
   }
   aux.forEach(element => {
     var arr=JSON.parse(localStorage.getItem("firstKey"));
-    if (arr[element].boolReminder){
+    if (arr[element].boolReminder && reminderTrigger[element]>0){
       var tim=arr[element].minutesReminder;
       setTimeout(function(){alert(tim+" minutes left for the event!")}, (reminderTrigger[element])/* (reminderTrigger[element]-tim.getMilliseconds()) */);
     }
