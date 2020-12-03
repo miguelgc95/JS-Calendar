@@ -204,6 +204,7 @@ function switchMonthNext(){
 }
 
 document.getElementById("backButton").addEventListener("click", switchMonthBack);
+
 function switchMonthBack(){
     var calendarContainer = document.getElementById("calendarContainer");
     calendarContainer.classList.add("removedBack");
@@ -243,11 +244,12 @@ function focusDay(){
 function createEvent(){
     var arr=JSON.parse(localStorage.getItem("firstKey"));
     arr.forEach(element => {
-        console.log(document.getElementById(element.initialDate))
-        console.log(element.initialDate);
-        var whatDay=document.getElementById(element.initialDate);
+        var sep=element.initialDate;
+        var aux=sep.slice(0,-6)
+        var whatDay=document.getElementById(aux);
         var displayEvent=document.createElement("button");
-        displayEvent.innerHTML="Event today";
+        displayEvent.innerHTML= document.getElementById("title").value;
+        displayEvent.setAttribute("id", JSON.parse(localStorage.getItem("firstKey")).length-1);
         displayEvent.setAttribute("class", "eventModalButton");
         whatDay.append(displayEvent);
         displayEvent.addEventListener("click", (new createEventModal()).openModal);

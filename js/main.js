@@ -1,5 +1,14 @@
-localStorage.setItem("firstKey", JSON.stringify([]));
+localStorage.setItem("firstKey", JSON.stringify([{boolEnd: false,
+  boolReminder: true,
+  description: "",
+  endDate: "",
+  initialDate: "2020-12-03T11:35",
+  minutesReminder: "5m",
+  title: "mik",
+  typeOfEvent: "Meeting"}]));
 const mydate=new Date();
+var reminderTrigger=[];
+window.onload= trigger();
 
 function createModal() {
   var modalRoot = document.getElementById('modal-root');
@@ -86,17 +95,11 @@ function addOneEvent(){
   var arr=JSON.parse(localStorage.getItem("firstKey"));
   var sep=arr[arr.length-1].initialDate;
   var aux=sep.slice(0,-6)
-  
-  console.log(aux);
   var whatDay=document.getElementById(aux);
- /*  var whatDay=JSON.parse(localStorage.getItem("firstKey"))[JSON.parse(localStorage.getItem("firstKey")).length-1].initialDate */
-  
   var displayEvent=document.createElement("button");
   displayEvent.innerHTML= document.getElementById("title").value;
   displayEvent.setAttribute("id", JSON.parse(localStorage.getItem("firstKey")).length-1);
   displayEvent.setAttribute("class", "eventModalButton");
-/*   console.log(displayEvent)
-  console.log(whatDay) */
   whatDay.append(displayEvent);
   displayEvent.addEventListener("click", (new createEventModal().openModal));
 }
@@ -150,3 +153,33 @@ function initialDateValidator(){
 
 document.getElementById("title").addEventListener("blur", titleValidator);
 document.getElementById("initialDate").onblur=function(){initialDateValidator()};
+
+/* Timming code */
+function trigger(){
+  var arr=JSON.parse(localStorage.getItem("firstKey"));
+  var t11=new Date();
+  var t1=t11.getTime();
+  console.log(t11)
+  console.log(t1)
+  arr.forEach(element => {
+    console.log(element.initialDate)
+    var t22=new Date(element.initialDate);
+    var t2=t22.getTime();
+    reminderTrigger.push(t2-t1);
+  });
+  GeneralReminder();
+}
+
+function GeneralReminder(){
+  var aux=[];
+  for(i=0;i<reminderTrigger.length;i++){
+    aux.push(i);
+  }
+  aux.forEach(element => {
+    var arr=JSON.parse(localStorage.getItem("firstKey"));
+    if (arr[element].boolReminder){
+      var tim=arr[element].minutesReminder;
+      setTimeout(function(){alert(tim+" minutes left for the event!")}, (reminderTrigger[element])/* (reminderTrigger[element]-tim.getMilliseconds()) */);
+    }
+  })
+}
