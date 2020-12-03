@@ -94,8 +94,11 @@ function storeNewEvent(event){
 function addOneEvent(){
   var arr=JSON.parse(localStorage.getItem("firstKey"));
   var sep=arr[arr.length-1].initialDate;
-  var aux=sep.slice(0,-6)
-  var whatDay=document.getElementById(aux);
+  var aux=sep.slice(0,-6);
+  var aux2=sep.slice(0,-6)+"event";
+  
+  console.log(aux);
+  var whatDay=document.getElementById(aux2);
   var displayEvent=document.createElement("button");
   displayEvent.innerHTML= document.getElementById("title").value;
   displayEvent.setAttribute("id", JSON.parse(localStorage.getItem("firstKey")).length-1);

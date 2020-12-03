@@ -144,12 +144,16 @@ function createCalendar(){
         else{
             //create div
             var calendarSquare = document.createElement("div");
+            var eventCalendarSpace = document.createElement("div");
+            eventCalendarSpace.setAttribute("class", "eventCalendarSpace");
             calendarSquare.classList.add("dayOnCalendar");
             if((i-dayMonthStarted+1)<10){
                 calendarSquare.setAttribute("id", year+"-"+(month+1)+"-"+('0'+(i-dayMonthStarted+1)));
+                eventCalendarSpace.setAttribute("id", year+"-"+(month+1)+"-"+('0'+(i-dayMonthStarted+1))+"event");
             }
             else{
                 calendarSquare.setAttribute("id", year+"-"+(month+1)+"-"+(i-dayMonthStarted+1));
+                eventCalendarSpace.setAttribute("id", year+"-"+(month+1)+"-"+(i-dayMonthStarted+1)+"event");
             }
             //set text on div
             calendarSquare.innerHTML = (i-dayMonthStarted)+1;
@@ -166,7 +170,10 @@ function createCalendar(){
             calendarSquare.append(addEventBtn);
             //addEvent();
             //adding div to calendar
+            calendarSquare.append(eventCalendarSpace);
             calendarContainer.append(calendarSquare);
+            
+            
         }
         focusDay();
     }
@@ -245,13 +252,19 @@ function createEvent(){
     var arr=JSON.parse(localStorage.getItem("firstKey"));
     arr.forEach(element => {
         var sep=element.initialDate;
-        var aux=sep.slice(0,-6)
-        var whatDay=document.getElementById(aux);
+        var aux=sep.slice(0,-6);
+        var aux2=sep.slice(0,-6)+"event";
+
+        var whatDay=document.getElementById(aux2);
+
+        //var whatDay2 = document.getElementById(element.initialDate+"event");
+        
         var displayEvent=document.createElement("button");
-        displayEvent.innerHTML= document.getElementById("title").value;
+        displayEvent.innerHTML= element.title;
         displayEvent.setAttribute("id", JSON.parse(localStorage.getItem("firstKey")).length-1);
         displayEvent.setAttribute("class", "eventModalButton");
         whatDay.append(displayEvent);
+        
         displayEvent.addEventListener("click", (new createEventModal()).openModal);
     });
 }

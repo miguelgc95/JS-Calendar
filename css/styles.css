@@ -7,7 +7,7 @@
 }
 
 #header{
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -240,6 +240,46 @@
     clear: both;
   }
 
+  .eventCalendarSpace{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+  }
+  .eventModalButton{
+      margin-bottom: 5%;
+      background-color: #FAEBD7;
+      border: none;
+      border-radius: 5px
+  }
+  .eventModalButton:hover{
+    cursor: pointer;
+    border: 1px solid #ffebd1;
+    opacity: 1;
+}
+#modalEventDescriptionContainer{
+    width: 95%;
+    padding: 2%;
+    border: 1px solid #ccc;
+    background-color:  rgb(241, 240, 240);
+    border-radius: 5px;
+    resize: vertical;
+}
+#modalEventCancelBtn, #modalEventDeleteBtn{
+    width: 20%;
+    margin-top: 2%;
+    margin-right: 2%;
+    background-color: #f2f2f2;
+    color: black;
+    border: none;
+    border-radius: 2px;
+    padding: 2%;
+}
+#modalEventCancelBtn:hover, #modalEventDeleteBtn:hover{
+    cursor: pointer;
+    border: 1px solid #d8d7d7;
+    opacity: 1;
+}
   @media only screen and (max-width: 600px) {
     .addEventBtn{
         margin-right: -20%;
@@ -260,6 +300,31 @@
     .dayOnCalendar{
         width: 13.99%;
         height: 3em;
+    }
+    .eventModalButton{
+        overflow: hidden;
+        width: 1%;
+    }
+    #header{
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    #modal-opener{
+        width: 40px;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-bottom: 2%;
+        background-color: #f2f2f2;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 10%;
     }
 }
 
@@ -322,6 +387,31 @@
         border-radius: 2px;
         padding: 2%;
       }
+      .eventModalButton{
+        overflow: hidden;
+        width: 1%;
+    }
+    #header{
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    #modal-opener{
+        width: 40px;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-bottom: 2%;
+        background-color: #f2f2f2;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 10%;
+    }
   }
   @media only screen and (min-width: 1250px) {
     .addEventBtn{
