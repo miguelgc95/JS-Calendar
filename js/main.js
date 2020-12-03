@@ -85,7 +85,7 @@ function storeNewEvent(event){
 function addOneEvent(){
   var arr=JSON.parse(localStorage.getItem("firstKey"));
   var sep=arr[arr.length-1].initialDate;
-  var aux=sep.slice(0,-6)
+  var aux=sep.slice(0,-6)+"event";
   
   console.log(aux);
   var whatDay=document.getElementById(aux);

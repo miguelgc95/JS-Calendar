@@ -144,12 +144,16 @@ function createCalendar(){
         else{
             //create div
             var calendarSquare = document.createElement("div");
+            var eventCalendarSpace = document.createElement("div");
+            eventCalendarSpace.setAttribute("class", "eventCalendarSpace");
             calendarSquare.classList.add("dayOnCalendar");
             if((i-dayMonthStarted+1)<10){
                 calendarSquare.setAttribute("id", year+"-"+(month+1)+"-"+('0'+(i-dayMonthStarted+1)));
+                eventCalendarSpace.setAttribute("id", year+"-"+(month+1)+"-"+('0'+(i-dayMonthStarted+1))+"event");
             }
             else{
                 calendarSquare.setAttribute("id", year+"-"+(month+1)+"-"+(i-dayMonthStarted+1));
+                eventCalendarSpace.setAttribute("id", year+"-"+(month+1)+"-"+(i-dayMonthStarted+1)+"event");
             }
             //set text on div
             calendarSquare.innerHTML = (i-dayMonthStarted)+1;
@@ -166,7 +170,10 @@ function createCalendar(){
             calendarSquare.append(addEventBtn);
             //addEvent();
             //adding div to calendar
+            calendarSquare.append(eventCalendarSpace);
             calendarContainer.append(calendarSquare);
+            
+            
         }
         focusDay();
     }
@@ -244,8 +251,9 @@ function createEvent(){
     var arr=JSON.parse(localStorage.getItem("firstKey"));
     arr.forEach(element => {
         console.log(document.getElementById(element.initialDate))
-        console.log(element.initialDate);
-        var whatDay=document.getElementById(element.initialDate);
+        console.log(element.initialDate+"event");
+        var whatDay=document.getElementById(element.initialDate+"event");
+        console.log(whatDay);
         var displayEvent=document.createElement("button");
         displayEvent.innerHTML="Event today";
         displayEvent.setAttribute("class", "eventModalButton");

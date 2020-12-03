@@ -10,6 +10,8 @@ function createEventModal(){
     
     for(let i = 0; i < arr.length; i++){
         var eventModalButton = document.getElementById([i]);
+        console.log(eventModalButton);
+        eventModalButton.setAttribute("class", "eventModalButton");
         eventModalButton.addEventListener("click", setUpModal);
         eventModalButton.addEventListener("click", openModal);
     }
@@ -23,7 +25,16 @@ function createEventModal(){
                 document.getElementById("modalEventDate").innerHTML = arr[i].initialDate;
                 document.getElementById("modalEventType").innerHTML = arr[i].typeOfEvent;
                 document.getElementById("modalEventDescription").innerHTML = arr[i].description;
+                
+                var modalEventDeleteBtn = document.getElementById("modalEventDeleteBtn");
+                modalEventDeleteBtn.addEventListener("click", deleteEvent);
+
+                function deleteEvent(){
+                    rootClick();
+                    e.target.style.visibility='hidden';
+                }
             }
+            
         }
     }
     
@@ -45,4 +56,5 @@ function createEventModal(){
         e.stopImmediatePropagation();
         return false;
     }
+
 }
